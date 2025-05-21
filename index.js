@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 
 const aliasGenerator = require('./aliasGenerator');
 
-app.use(cors()); // Enable CORS so frontend can fetch API
+app.use(cors());
 
 app.get('/generate-alias', (req, res) => {
     const alias = aliasGenerator.generateAlias();
@@ -15,4 +15,3 @@ app.get('/generate-alias', (req, res) => {
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
-
