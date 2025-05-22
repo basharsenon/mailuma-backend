@@ -6,10 +6,17 @@ app.use(cors());
 
 app.get("/generate-alias", (req, res) => {
   const base = "aliofficerecruitmentm185lhr";
-  const alias = base.replace(/([a-zA-Z])/g, "$1.") + "@gmail.com";
-  res.json({ alias });
+  const characters = "abcdefghijklmnopqrstuvwxyz0123456789";
+  let random = "";
+  for (let i = 0; i < 6; i++) {
+    random += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+
+  const dotAlias = base.split("").join(".") + "." + random + "@gmail.com";
+
+  res.json({ alias: dotAlias });
 });
 
 app.listen(3000, () => {
-  console.log("Server running on port 3000");
+  console.log("✅ Backend live on port 3000");
 });
